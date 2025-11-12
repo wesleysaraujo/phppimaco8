@@ -1,3 +1,5 @@
 vendor/
 .idea/
 example/
+.claude
+CLAUDE.md
