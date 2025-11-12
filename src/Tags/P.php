@@ -6,10 +6,10 @@ namespace Proner\PhpPimaco\Tags;
 
 class P
 {
-    private $content;
-    private $size;
-    private $bold;
-    private $margin;
+    private string $content;
+    private ?float $size = null;
+    private bool $bold = false;
+    private ?array $margin = null;
 
     /**
      * P constructor.
@@ -18,7 +18,6 @@ class P
     public function __construct(string $content)
     {
         $this->content = $content;
-        $this->bold = false;
     }
 
     /**
@@ -50,8 +49,8 @@ class P
     }
 
     /**
-     * @param array $margin 
-     * @return $this 
+     * @param array $margin
+     * @return $this
      */
     public function margin(array $margin)
     {

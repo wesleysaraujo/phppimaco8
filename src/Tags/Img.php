@@ -6,12 +6,12 @@ namespace Proner\PhpPimaco\Tags;
 
 class Img
 {
-    private $content;
-    private $margin;
-    private $align = 'left';
-    private $width;
-    private $height;
-    private $rotate;
+    private string $content;
+    private ?string $margin = null;
+    private string $align = 'left';
+    private ?float $width = null;
+    private ?float $height = null;
+    private ?float $rotate = null;
 
 
     /**
@@ -70,10 +70,12 @@ class Img
 
     /**
      * @param float $rotate
+     * @return $this
      */
-    public function rotate(float $rotate)
+    public function rotate(float $rotate): self
     {
         $this->rotate = $rotate;
+        return $this;
     }
 
     public function render()

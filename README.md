@@ -11,7 +11,7 @@ O PHP PIMACO é um pacote para geração de etiquetas usando a biblioteca <a hre
 
 ## Dependência
 
-- PHP 7.0 ou superior
+- PHP 8.2 ou superior
 
 ## Instalação
 
@@ -166,3 +166,9 @@ $pimaco->output();
 ## Documentação
 
 Acesse na nossa Wiki para ter acesso a documentação <a href="https://github.com/PronerInformatica/phppimaco/wiki" target="_blank">Wiki</a>
+
+## Contribuição
+Sinta-se à vontade para contribuir com o projeto, seja reportando bugs, sugerindo melhorias ou enviando pull requests.
+
+## Créditos
+Esse projeto é um fork da lib phppimaco do <a href="https://github.com/fernandocvargas/phppimaco" target="_blank">Fernando Vargas</a>, refatorado e adaptado para as novas versões do PHP e MPDF.

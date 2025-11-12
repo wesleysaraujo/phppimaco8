@@ -7,27 +7,20 @@ namespace Proner\PhpPimaco\Tags;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
-use Endroid\QrCode\ImageData\LogoImageData;
-use Endroid\QrCode\Label\Font\Font;
-use Endroid\QrCode\Label\Label;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeEnlarge;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeShrink;
 use Endroid\QrCode\Writer\PngWriter;
 
 class QrCode
 {
-    private $size;
-    private $label;
-    private $labelFontSize;
-    private $padding;
-    private $margin;
-    private $align;
-    private $content;
-    private $br;
+    private int $size = 100;
+    private ?string $label = null;
+    private int $labelFontSize = 12;
+    private float $padding = 0;
+    private ?int $margin = null;
+    private string $align = 'left';
+    private string $content;
+    private string $br = '';
 
     /**
      * QrCode constructor.
@@ -37,11 +30,6 @@ class QrCode
     public function __construct(string $content)
     {
         $this->content = $content;
-        $this->labelFontSize = 12;
-        $this->size = 100;
-        $this->padding = 0;
-        $this->align = 'left';
-        return $this;
     }
 
     /**
@@ -104,7 +92,7 @@ class QrCode
         return $this;
     }
 
-    public function br()
+    public function br(): void
     {
         $this->br .= "<br>";
     }

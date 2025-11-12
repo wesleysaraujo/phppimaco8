@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Proner\PhpPimaco\Tags;
 
-use phpDocumentor\Reflection\Types\Void_;
-use \Picqer\Barcode\BarcodeGeneratorPNG;
+use Picqer\Barcode\BarcodeGeneratorPNG;
 
 class Barcode
 {
-    private $width;
-    private $height;
-    private $content;
-    private $typeCode;
-    private $margin;
-    private $align;
-    private $br;
+    private float $width = 2;
+    private float $height = 30;
+    private string $content;
+    private string $typeCode = 'TYPE_CODE_128';
+    private ?string $margin = null;
+    private string $align = 'left';
+    private string $br = '';
 
     /**
      * Barcode constructor.
@@ -25,16 +24,10 @@ class Barcode
     public function __construct(string $content, string $typeCode = null)
     {
         $this->content = $content;
-        $this->typeCode = 'TYPE_CODE_128';
 
         if ($typeCode !== null) {
             $this->typeCode = $typeCode;
         }
-
-        $this->width = 2;
-        $this->height = 30;
-        $this->align = 'left';
-        return $this;
     }
 
     /**
@@ -82,7 +75,7 @@ class Barcode
         return $this;
     }
 
-    public function br()
+    public function br(): void
     {
         $this->br .= "<br>";
     }

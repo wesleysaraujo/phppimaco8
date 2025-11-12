@@ -11,20 +11,23 @@ use Proner\PhpPimaco\Tags\QrCode;
 
 class Tag
 {
-    private $content;
+    private string $content = '';
+    private \ArrayObject $tags;
 
-    private $width;
-    private $height;
-    private $border;
-    private $size;
-    private $padding;
-    private $marginLeft;
+    private float $width;
+    private float $height;
+    private float $border;
+    private float $size;
+    private float $padding;
+    private float $marginLeft;
+    private ?string $ln = null;
+    private ?string $align = null;
 
     /**
      * Tag constructor.
      * @param string|null $content
      */
-    public function __construct(string $content = null)
+    public function __construct(?string $content = null)
     {
         $this->tags = new \ArrayObject();
 
@@ -43,12 +46,12 @@ class Tag
         $json = file_get_contents($path . $template);
         $std = json_decode($json);
 
-        $this->width = $std->tag->width;
-        $this->height = $std->tag->height;
-        $this->marginLeft = $std->tag->{'margin-left'};
+        $this->width = (float) $std->tag->width;
+        $this->height = (float) $std->tag->height;
+        $this->marginLeft = (float) $std->tag->{'margin-left'};
 
         if (empty($this->border)) {
-            $this->border = $std->tag->border;
+            $this->border = (float) $std->tag->border;
         }
 
         if (empty($this->padding)) {
@@ -143,7 +146,7 @@ class Tag
      * @param int|null $fontSize
      * @return QrCode
      */
-    public function qrcode(string $content, string $label = null, int $fontSize = null)
+    public function qrcode(string $content, ?string $label = null, ?int $fontSize = null)
     {
         $qrcode = new QrCode($content);
 

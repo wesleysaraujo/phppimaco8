@@ -8,33 +8,34 @@ use Mpdf\Mpdf;
 
 class Pimaco
 {
-    private $path_template;
-    private $file_template;
-    private $content;
+    private string $path_template;
+    private string $file_template;
+    private string $content = '';
+    private \Mpdf\Mpdf $pdf;
 
-    private $width;
-    private $height;
-    private $fontSize;
-    private $orientation;
-    private $columns;
-    private $unit;
-    private $marginTop;
-    private $marginLeft;
-    private $marginRight;
-    private $marginBottom;
-    private $marginHeader;
-    private $marginFooter;
+    private float $width;
+    private float $height;
+    private float $fontSize;
+    private string $orientation;
+    private int $columns;
+    private string $unit;
+    private float $marginTop;
+    private float $marginLeft;
+    private float $marginRight;
+    private float $marginBottom;
+    private float $marginHeader;
+    private float $marginFooter;
 
-    private $tags;
+    private \ArrayObject $tags;
 
     /**
      * Pimaco constructor.
      * @param string $template
-     * @param string $path_template
-     * @param string $tempDir
+     * @param string|null $path_template
+     * @param string|null $tempDir
      * @throws \Exception
      */
-    public function __construct(string $template, string $path_template = null, string $tempDir = null)
+    public function __construct(string $template, ?string $path_template = null, ?string $tempDir = null)
     {
         $this->path_template = dirname(__DIR__) . "/templates/";
         if (!empty($path_template)) {
@@ -78,18 +79,18 @@ class Pimaco
         $json = file_get_contents($this->path_template . $this->file_template);
         $std = json_decode($json);
 
-        $this->width = $std->page->size[0];
-        $this->height = $std->page->size[1];
-        $this->fontSize = $std->page->{'font-size'};
+        $this->width = (float) $std->page->size[0];
+        $this->height = (float) $std->page->size[1];
+        $this->fontSize = (float) $std->page->{'font-size'};
         $this->orientation = $std->page->orientation;
-        $this->columns = $std->page->columns;
+        $this->columns = (int) $std->page->columns;
         $this->unit = $std->page->unit;
-        $this->marginTop = $std->page->{'margin-top'};
-        $this->marginLeft = $std->page->{'margin-left'};
-        $this->marginRight = $std->page->{'margin-right'};
-        $this->marginBottom = $std->page->{'margin-bottom'};
-        $this->marginHeader = $std->page->{'margin-header'};
-        $this->marginFooter = $std->page->{'margin-footer'};
+        $this->marginTop = (float) $std->page->{'margin-top'};
+        $this->marginLeft = (float) $std->page->{'margin-left'};
+        $this->marginRight = (float) $std->page->{'margin-right'};
+        $this->marginBottom = (float) $std->page->{'margin-bottom'};
+        $this->marginHeader = (float) $std->page->{'margin-header'};
+        $this->marginFooter = (float) $std->page->{'margin-footer'};
     }
 
     public function addTag(Tag $tag)
@@ -163,7 +164,7 @@ class Pimaco
      * @param string|null $dest
      * @throws \Mpdf\MpdfException
      */
-    public function output(string $name = null, string $dest = null)
+    public function output(?string $name = null, ?string $dest = null)
     {
         //        var_dump($this->render());
         //        exit();
