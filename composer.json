@@ -1,7 +1,7 @@
 {
     "name": "wesleysaraujo/phppimaco8",
-    "version": "2.0.0",
-    "description": "Lib para geração de Etiquetas PIMACO ( LIB do Diogo Bemfica adaptada para PHP 8 por Wesley Serafim)",
+    "version": "3.0.0",
+    "description": "Lib para geração de Etiquetas PIMACO ( LIB do Diogo Bemfica refatorada para PHP 8 por Wesley Serafim)",
     "type": "library",
     "keywords": [
         "PIMACO",

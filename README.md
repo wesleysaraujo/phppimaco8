@@ -9,6 +9,8 @@
 
 O PHP PIMACO é um pacote para geração de etiquetas usando a biblioteca <a href="https://github.com/mpdf/mpdf" target="_blank">MPDF</a> para auxiliar a montagem de PDFs com as tuas etiquetas devidamente formatadas e prontas para impressão.
 
+Esse projeto é uma refatoração do PHPPimaco do Fernando Vargas, adaptado para as novas versões do PHP e MPDF.
+
 ## Dependência
 
 - PHP 8.2 ou superior
